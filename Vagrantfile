@@ -3,7 +3,7 @@ LAN_NET = "10.50.10."
 
 servers = [
   {
-    :hostname => "dev",
+	:hostname => "dev",
 	:cpu => "2",
 	:ram => "2048",
 	:ip => LAN_NET + "10",
@@ -19,10 +19,10 @@ servers = [
 Vagrant.configure("2") do |config|
   config.vm.box = IMAGE_NAME
   config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
-    servers.each do |machine|
-        config.vm.define machine[:hostname] do |master|
+	servers.each do |machine|
+		config.vm.define machine[:hostname] do |master|
 			master.vm.hostname = machine[:hostname]
-            master.vm.provider "virtualbox" do |vb|
+			master.vm.provider "virtualbox" do |vb|
 				vb.name = machine[:hostname]
 				vb.cpus = 1
 				vb.memory = "1024"
@@ -48,5 +48,5 @@ Vagrant.configure("2") do |config|
 				# /opt/hybrisstart.sh &
 			# SHELL
 		end
-    end
+	end
 end
