@@ -48,17 +48,3 @@ ant clean all -Dinput.template=develop
 ./hybrisserver.sh
 EOF
 chmod +x /opt/hybrisstart.sh
-
-cat <<EOF | sudo tee /etc/systemd/system/hybris.service
-[Unit]
-Description=Hybris
-
-[Service]
-ExecStart=/opt/hybrisstart.sh
-
-[Install]
-WantedBy=multi-user.target
-EOF
-chmod +x /etc/systemd/system/hybris.service
-
-systemctl start hybris

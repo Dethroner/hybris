@@ -44,9 +44,9 @@ Vagrant.configure("2") do |config|
 			master.vm.provision :shell, path: "./files/vm-route.sh", privileged: true
 			master.vm.provision :shell, path: "./files/filebeat.sh", args: machine[:tag], privileged: true
 			master.vm.provision :shell, path: "./files/bootstrap.sh", privileged: true
-			# master.vm.provision :shell, privileged: true, inline: <<-SHELL
-				# /opt/hybrisstart.sh &
-			# SHELL
+			master.vm.provision :shell, privileged: true, inline: <<-SHELL
+				/opt/hybrisstart.sh &> /tmp/start.out&
+			SHELL
 		end
 	end
 end
